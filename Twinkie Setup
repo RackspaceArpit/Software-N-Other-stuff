@@ -1,13 +1,38 @@
 https://github.com/racker/cbu-twinkie/blob/master/DEVELOPING.md
 
-
 for run in {1..10}; do openssl rand -base64 12; done
 
 1. VS - https://c71ff7391c6ed5611261-db9bdbee1b227f4d138ad460388465f3.ssl.cf5.rackcdn.com/DONOTREMOVE.dat
 2. Dev databases: https://devfiles.cbu.rackspace.net/APIdev/buildbox-dbs.zip
 3. SQL: http://83a0bda2515f55aa31b6-db9bdbee1b227f4d138ad460388465f3.r3.cf5.rackcdn.com/SW_DVD9_NTRL_SQL_Svr_Ent_Core_2019Dec2019_64Bit_English_OEM_VL_X22-22120.ISO
-
 SQL feature selection
 		Database Engine Services
 		Full-Text and Semantic Extensions for Search
 		SQL Client Connectivity SDK
+		
+USE [master]
+GO
+/* For security reasons the login is created disabled and with a random password. */
+/****** Object:  Login [utest]    Script Date: 11/18/2020 8:53:07 AM ******/
+CREATE LOGIN [utest] WITH PASSWORD=N'MnPe9XDwqr0iU0VZVD+hXYSoYUXMndTGN0Bd00XPS7I=', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
+GO
+ALTER LOGIN [utest] DISABLE
+GO
+ALTER SERVER ROLE [sysadmin] ADD MEMBER [utest]
+GO
+ALTER SERVER ROLE [securityadmin] ADD MEMBER [utest]
+GO
+ALTER SERVER ROLE [serveradmin] ADD MEMBER [utest]
+GO
+ALTER SERVER ROLE [setupadmin] ADD MEMBER [utest]
+GO
+ALTER SERVER ROLE [processadmin] ADD MEMBER [utest]
+GO
+ALTER SERVER ROLE [diskadmin] ADD MEMBER [utest]
+GO
+ALTER SERVER ROLE [dbcreator] ADD MEMBER [utest]
+GO
+ALTER SERVER ROLE [bulkadmin] ADD MEMBER [utest]
+GO
+
+
