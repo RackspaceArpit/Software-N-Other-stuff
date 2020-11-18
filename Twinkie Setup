@@ -35,4 +35,10 @@ GO
 ALTER SERVER ROLE [bulkadmin] ADD MEMBER [utest]
 GO
 
+$ git clone https://github.com/username/dashboards.git
+$ cd dashboards
+$ git remote add upstream https://github.com/keen/dashboards.git
+Pull from upstream frequently to keep your local copy up to date:
+$ git pull upstream gh-pages
+
 
